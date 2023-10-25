@@ -13,5 +13,22 @@ class CreateMovies < ActiveRecord::Migration[7.1]
 
       t.timestamps
     end
+
+    create_table :shows do |t|
+      t.date :show_date
+      t.time :show_time
+      t.belongs_to :movie
+      t.belongs_to :theater
+
+      t.timestamps
+    end
+
+    create_table :theaters do |t|
+      t.string :theater_name
+      t.string :city
+      t.text :theater_address
+
+      t.timestamps
+    end
   end
 end

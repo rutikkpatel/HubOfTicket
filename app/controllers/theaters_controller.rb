@@ -1,4 +1,6 @@
 class TheatersController < ApplicationController
+  before_action :set_theater, only: [:edit, :update, :show, :destroy]
+
   def index
     @theaters = Theater.all
   end
@@ -49,6 +51,6 @@ class TheatersController < ApplicationController
   end
 
   def theater_params
-    params.require(:theater).permit(:theater_name, :theater_address)
+    params.require(:theater).permit(:theater_name, :city, :theater_address)
   end
 end

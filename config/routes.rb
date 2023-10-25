@@ -1,16 +1,4 @@
 Rails.application.routes.draw do
-  get 'bookings/index'
-  get 'bookings/new'
-  get 'bookings/show'
-  get 'bookings/edit'
-  get 'seats/index'
-  get 'seats/new'
-  get 'seats/show'
-  get 'seats/edit'
-  get 'shows/index'
-  get 'shows/new'
-  get 'shows/show'
-  get 'shows/edit'
   devise_for :users
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

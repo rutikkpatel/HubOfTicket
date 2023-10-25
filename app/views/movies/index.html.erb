@@ -3,27 +3,20 @@
 <% if @movies.count == 0 %>
   <h2 class="text-center mt-4 text-danger">Hey, currently there are no movies available in this category!</h2>
 <% else %>
-  <% @movies.each do |movie| %>
-    <% if movie.image.attached? %>
-      <%= image_tag movie.image, height: "300px", width: "300px" %>
-    <% end %>
-    <h2><%= link_to movie.movie_title, movie_path(movie) %></h2>
-  <%end%>
+  <div class="card-group">
+    <% @movies.each do |movie| %>
+      <div class="card">
+        <% if movie.image.attached? %>
+          <%= image_tag movie.image, height: "300px", width: "300px", class: "card-img-top" %>
+        <% end %>
+        <div class="card-body">
+          <h5 class="card-title"><%= link_to movie.movie_title, movie_path(movie) %></h5>
+          <p class="card-text"><%= movie.movie_description %></p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">added <%= time_ago_in_words(movie.created_at) %> ago</small>
+        </div>
+      </div>
+    <%end%>
+  </div>
 <%end%>
-
-<div class="card-group">
-  <% @movies.each do |movie| %>
-    <div class="card">
-      <% if movie.image.attached? %>
-        <%= image_tag movie.image, height: "300px", width: "300px", class: "card-img-top" %>
-      <% end %>
-      <div class="card-body">
-        <h5 class="card-title"><%= link_to movie.movie_title, movie_path(movie) %></h5>
-        <p class="card-text"><%= movie.movie_description %></p>
-      </div>
-      <div class="card-footer">
-        <small class="text-muted">added <%= time_ago_in_words(movie.created_at) %> ago</small>
-      </div>
-    </div>
-  <%end%>
-</div>

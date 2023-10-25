@@ -51,6 +51,6 @@ class ShowsController < ApplicationController
   end
 
   def show_params
-    params.require(:show).permit(:show_time, :show_date, :movie_id, :screen_id)
+    params.require(:show).permit(:show_date, :show_time, :movie_id, :theater_id)
   end
 end
