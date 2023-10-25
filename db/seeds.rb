@@ -22,15 +22,15 @@ theaters = [
 Theater.create(theaters)
 puts "Theaters created"
 
-# Users
-users = [
-  { email: "user1@example.com", password: "password" },
-  { email: "user2@example.com", password: "password" },
-  { email: "user3@example.com", password: "password" }
-]
+# # Users
+# users = [
+#   { email: "user1@example.com", password: "password" },
+#   { email: "user2@example.com", password: "password" },
+#   { email: "user3@example.com", password: "password" }
+# ]
 
-User.create(users)
-puts "Users created"
+# User.create(users)
+# puts "Users created"
 
 # Movies
 movies = [

@@ -1,5 +1,5 @@
 class ShowsController < ApplicationController
-  before_action :set_show, only: [:edit, :update, :show, :destroy]
+  before_action :set_show, only: [:edit, :update, :destroy]
 
   def index
     @shows = Show.all
@@ -34,6 +34,8 @@ class ShowsController < ApplicationController
   end
 
   def show
+    @movie = Movie.find(params[:id])
+    @shows = @movie.shows
   end
 
   def destroy

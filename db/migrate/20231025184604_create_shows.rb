@@ -2,9 +2,9 @@ class CreateShows < ActiveRecord::Migration[7.1]
   def change
     create_table :shows do |t|
       t.date :show_date
-      t.string :show_time
-      t.references :movie, null: false, foreign_key: true
-      t.references :theater, null: false, foreign_key: true
+      t.datetime :show_time
+      t.belongs_to :movie
+      t.belongs_to :theater
 
       t.timestamps
     end

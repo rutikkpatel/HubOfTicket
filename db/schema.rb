@@ -81,9 +81,9 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_25_194701) do
 
   create_table "shows", force: :cascade do |t|
     t.date "show_date"
-    t.string "show_time"
-    t.bigint "movie_id", null: false
-    t.bigint "theater_id", null: false
+    t.datetime "show_time"
+    t.bigint "movie_id"
+    t.bigint "theater_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["movie_id"], name: "index_shows_on_movie_id"
@@ -127,7 +127,4 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_25_194701) do
   add_foreign_key "bookings", "shows"
   add_foreign_key "bookings", "theaters"
   add_foreign_key "bookings", "users"
-  add_foreign_key "shows", "movies"
-  add_foreign_key "shows", "theaters"
-  add_foreign_key "theaters", "movies"
 end
