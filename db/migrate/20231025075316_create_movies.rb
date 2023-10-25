@@ -7,8 +7,8 @@ class CreateMovies < ActiveRecord::Migration[7.1]
       t.string :movie_language
       t.date :movie_release_date
       t.string :movie_country
-      t.integer :movie_category
       t.integer :movie_rating
+      t.integer :category_id
 
       t.timestamps
     end

@@ -26,8 +26,8 @@
             Movies Categories
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <% Movie.all.each do |movie| %>
-              <li><%= link_to movie.movie_category, movies_path(movie: movie.movie_category), class:"dropdown-item" %></li>
+            <% Category.all.each do |category| %>
+              <li><%= link_to category.category_name, movies_path(category: category.category_name), class:"dropdown-item" %></li>
             <% end %>
           </ul>
         </li>

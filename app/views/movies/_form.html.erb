@@ -25,8 +25,8 @@
   </div><br>
 
   <div class = "field form-group" >
-    <strong><%= f.label :movie_category %></strong>
-    <%= f.select :movie_category, Movie.movie_categories.keys, class:"form-select"  %>
+    <strong><%= f.label :category %></strong>
+    <%= f.select :category_id, Category.all.map { |c| [c.category_name, c.id]}, class:"form-control" %>
   </div><br>
 
   <div class = "field form-group" >
