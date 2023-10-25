@@ -49,6 +49,6 @@ class TheatersController < ApplicationController
   end
 
   def theater_params
-    params.require(:theater).permit(:name, :address, :movie_id)
+    params.require(:theater).permit(:theater_name, :theater_address)
   end
 end

@@ -1,0 +1,38 @@
+<% if @screen.errors.any? %>
+  <h4> The following errors prevented the Screen ! </h4>
+  <ul>
+    <% @screen.errors.full_messages.each do |msg| %>
+      <li class = "text-danger"> <%= msg %> </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with(model:@screen, local: true, data: {turbo: false}) do |f| %>
+
+  <div class = "field form-group" >
+    <strong><%= f.label :screen_name %></strong>
+    <%= f.text_field :screen_name, class:"form-control" %>
+  </div><br>
+
+  <div class = "field form-group" >
+    <strong><%= f.label :movie_id %></strong>
+    <%= f.select :movie_id, Movie.all.map { |m| [m.movie_title, m.id]}, class:"form-control" %>
+  </div><br>
+
+  <div class = "field form-group" >
+    <strong><%= f.label :theater_id %></strong>
+    <%= f.select :theater_id, Theater.all.map { |t| [t.theater_name, t.id]}, class:"form-control" %>
+  </div><br>
+
+  <div class="text-center">
+    <div class = "action" >
+      <%= f.button :submit, class:"btn btn-success" %>
+    </div>
+  </div><br>
+
+  <div class="text-center">
+    <div class = "field form-group" >
+      <%= link_to 'Dismiss', { controller: 'screens', action: 'index'}, class: "btn btn-danger" %>
+    </div>
+  </div>
+<% end %>

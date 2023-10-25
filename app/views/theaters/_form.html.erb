@@ -1,0 +1,33 @@
+<% if @theater.errors.any? %>
+  <h4> The following errors prevented the Theater ! </h4>
+  <ul>
+    <% @theater.errors.full_messages.each do |msg| %>
+      <li class = "text-danger"> <%= msg %> </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with(model:@theater, local: true, data: {turbo: false}) do |f| %>
+
+  <div class = "field form-group" >
+    <strong><%= f.label :theater_name %></strong>
+    <%= f.text_field :theater_name, class:"form-control" %>
+  </div><br>
+
+  <div class = "field form-group" >
+    <strong><%= f.label :theater_address %></strong>
+    <%= f.text_area :theater_address, class:"form-control" %>
+  </div><br>
+
+  <div class="text-center">
+    <div class = "action" >
+      <%= f.button :submit, class:"btn btn-success" %>
+    </div>
+  </div><br>
+
+  <div class="text-center">
+    <div class = "field form-group" >
+      <%= link_to 'Dismiss', { controller: 'theaters', action: 'index'}, class: "btn btn-danger" %>
+    </div>
+  </div>
+<% end %>

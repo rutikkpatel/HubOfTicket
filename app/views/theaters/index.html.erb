@@ -1,0 +1,3 @@
+<% @theaters.each do |theater| %>
+  <h2><%= link_to theater.theater_name, theater_path(theater) %></h2>
+<%end%>

@@ -1,3 +1,3 @@
 class Theater < ApplicationRecord
-  belongs_to :movie
+  has_many :screens
 end
