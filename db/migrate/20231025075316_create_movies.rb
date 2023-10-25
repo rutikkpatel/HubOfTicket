@@ -9,6 +9,7 @@ class CreateMovies < ActiveRecord::Migration[7.1]
       t.string :movie_country
       t.integer :movie_rating
       t.integer :category_id
+      t.belongs_to :theater
 
       t.timestamps
     end

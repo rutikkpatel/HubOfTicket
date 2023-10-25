@@ -1,7 +1,17 @@
-<p><strong>Theater Name : </strong><%= @theater.theater_name %></p>
-<p><strong>City : </strong><%= @theater.city %></p>
-<p><strong>Address : </strong><%= @theater.theater_address %></p>
+<h2 class="text-center mt-4">Theater Details</h2><hr>
 
-<%= link_to 'Edit', edit_theater_path(@theater), class: "text-decoration-none btn btn-dark" %>
-<%= button_to 'Delete', theater_path(@theater), method: :delete, data: { confirm: "Are you sure you want to delete?" }, class: "btn btn-danger" %>
-<%= link_to 'Go Back', { controller: 'theaters', action: 'index'}, class: "btn btn-primary" %>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-6 mt-4">
+      <div class=" text-center mb-5">
+        <p class="card-title"><strong>Theater Name : </strong><%= @theater.theater_name %><p>
+        <p class="card-title"><strong>City : </strong><%= @theater.city %><p>
+        <p class="card-text"><strong>Address : </strong><%= @theater.theater_address %></p>
+        <p class="card-text"><%= link_to 'Add New', new_theater_path(@theater), class: "text-decoration-none btn btn-secondary" %></p>
+        <p class="card-text"><%= link_to 'Edit', edit_theater_path(@theater), class: "text-decoration-none btn btn-dark" %></p>
+        <p class="card-text"><%= button_to 'Delete', theater_path(@theater), method: :delete, data: { confirm: "Are you sure you want to delete?" }, class: "btn btn-danger" %></p>
+        <p class="card-text"> <%= link_to 'Back', { controller: 'theaters', action: 'index'}, class: "btn btn-primary" %> </p>
+      </div>
+    </div>
+  </div>
+</div>

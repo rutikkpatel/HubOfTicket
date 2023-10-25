@@ -1,3 +1,13 @@
-<% @shows.each do |show| %>
-  <h2><%= link_to show.show_date, show_path(show) %></h2>
-<%end%>
+<h2 class="text-center mt-4">List of Shows</h2><br>
+
+<div class="text-center">
+  <% @shows.each do |show| %>
+    <div class="my-4">
+      <div class="card bg-light">
+        <div class="card-body">
+          <p class="card-text"><%= link_to show.show_date, show_path(show) %></p>
+        </div>
+      </div>
+    </div>
+  <%end%>
+</div>

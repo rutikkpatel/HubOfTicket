@@ -4,7 +4,7 @@ class CreateTheaters < ActiveRecord::Migration[7.1]
       t.string :theater_name
       t.string :city
       t.text :theater_address
-      t.references :movie, null: false, foreign_key: true
+      t.references :movie, foreign_key: true
 
       t.timestamps
     end

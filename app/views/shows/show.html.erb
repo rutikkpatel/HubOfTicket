@@ -1,7 +1,19 @@
-<p><strong>Show Date : </strong><%= @show.show_date %></p>
-<p><strong>Show Time : </strong><%= @show.show_time %></p>
-<p><strong>Movie : </strong><%= @show.movie.movie_title %></p>
+<h2 class="text-center mt-4">Show Details</h2><hr>
 
-<%= link_to 'Edit', edit_show_path(@show), class: "text-decoration-none btn btn-dark" %>
-<%= button_to 'Delete', show_path(@show), method: :delete, data: { confirm: "Are you sure you want to delete?" }, class: "btn btn-danger" %>
-<%= link_to 'Go Back', { controller: 'shows', action: 'index'}, class: "btn btn-primary" %>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-6 mt-4">
+      <div class=" text-center mb-5">
+          <p class="card-title"><strong>Show Date : </strong><%= @show.show_date  %><p>
+          <p class="card-title"><strong>Show Time : </strong><%= @show.show_time  %><p>
+          <p class="card-text"><strong>Movie : </strong><%= @show.movie.movie_title %></p>
+          <p class="card-text"><strong>Theater Name : </strong><%= @show.theater.theater_name %></p>
+          <p class="card-text"><%= link_to 'Add New', new_show_path(@show), class: "text-decoration-none btn btn-secondary" %></p>
+          <p class="card-text"><%= link_to 'Edit', edit_show_path(@show), class: "text-decoration-none btn btn-dark" %></p>
+          <p class="card-text"><%= button_to 'Delete', show_path(@show), method: :delete, data: { confirm: "Are you sure you want to delete?" }, class: "btn btn-danger" %></p>
+          <p class="card-text"> <%= link_to 'Back', { controller: 'shows', action: 'index'}, class: "btn btn-primary" %> </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

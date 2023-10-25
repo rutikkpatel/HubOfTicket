@@ -1,3 +1,13 @@
-<% @theaters.each do |theater| %>
-  <h2><%= link_to theater.theater_name, theater_path(theater) %></h2>
-<%end%>
+<h2 class="text-center mt-4">Lists of Theater</h2><br>
+
+<div class="text-center">
+  <% @theaters.each do |theater| %>
+    <div class="my-4">
+      <div class="card bg-light">
+        <div class="card-body">
+          <p class="card-text"><%= link_to theater.theater_name, theater_path(theater) %></p>
+        </div>
+      </div>
+    </div>
+  <%end%>
+</div>

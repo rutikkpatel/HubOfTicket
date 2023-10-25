@@ -5,4 +5,5 @@ class Movie < ApplicationRecord
   has_many :theaters
   has_many :bookings
   belongs_to :category
+  belongs_to :theater
 end
