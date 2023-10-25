@@ -1,0 +1,33 @@
+<% if @show.errors.any? %>
+  <h4> The following errors prevented the Show ! </h4>
+  <ul>
+    <% @show.errors.full_messages.each do |msg| %>
+      <li class = "text-danger"> <%= msg %> </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with(model:@show, local: true, data: {turbo: false}) do |f| %>
+
+  <div class = "field form-group" >
+    <strong><%= f.label :show_date %></strong>
+    <%= f.date_field :show_date, class:"form-control" %>
+  </div><br>
+
+  <div class = "field form-group" >
+    <strong><%= f.label :show_time %></strong>
+    <%= f.time_field :show_time, class:"form-control" %>
+  </div><br>
+
+  <div class="text-center">
+    <div class = "action" >
+      <%= f.button :submit, class:"btn btn-success" %>
+    </div>
+  </div><br>
+
+  <div class="text-center">
+    <div class = "field form-group" >
+      <%= link_to 'Dismiss', { controller: 'shows', action: 'index'}, class: "btn btn-danger" %>
+    </div>
+  </div>
+<% end %>

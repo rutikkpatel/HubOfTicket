@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  show_date: 2023-10-25
+  show_time: 2023-10-25 13:50:24
+  movie: one
+  screen: one
+
+two:
+  show_date: 2023-10-25
+  show_time: 2023-10-25 13:50:24
+  movie: two
+  screen: two

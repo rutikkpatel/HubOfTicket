@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>HubOfTicket</title>
+    <title>Book My Movie Show</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -17,9 +17,7 @@
   </head>
 
   <body>
-    <%= render "pages/header" %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <%= render "layouts/header" %>
     <%= yield %>
   </body>
 </html>

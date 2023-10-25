@@ -1,0 +1,4 @@
+<% @bookings.each do |booking| %>
+  <h2><%= link_to booking.number_of_seats, show_path(booking) %></h2>
+  <h2><%= link_to booking.booking_status, show_path(booking) %></h2>  
+<%end%>

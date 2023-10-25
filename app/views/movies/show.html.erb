@@ -1,6 +1,4 @@
-<% if @movie.image.attached? %>
-  <%= @movie.image %>
-<% end %>
+<p><%= image_tag @movie.image, height: "300px", width: "300px" %></p>
 <p><strong>Title : </strong><%= @movie.movie_title %></p>
 <p><strong>Description : </strong><%= @movie.movie_description %></p>
 <p><strong>Category : </strong><%= @movie.category.category_name %></p>

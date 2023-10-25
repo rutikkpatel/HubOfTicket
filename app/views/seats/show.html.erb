@@ -1,0 +1,5 @@
+<p><strong>Number of Seats : </strong><%= @seat.no_of_seats %></p>
+
+<%= link_to 'Edit', edit_seat_path(@seat), class: "text-decoration-none btn btn-dark" %>
+<%= button_to 'Delete', seat_path(@seat), method: :delete, data: { confirm: "Are you sure you want to delete?" }, class: "btn btn-danger" %>
+<%= link_to 'Go Back', { controller: 'theaters', action: 'index'}, class: "btn btn-primary" %>

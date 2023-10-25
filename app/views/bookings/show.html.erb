@@ -1,0 +1,6 @@
+<p><strong>Show Date : </strong><%= @booking.show_date %></p>
+<p><strong>Show Time : </strong><%= @booking.show_time %></p>
+
+<%= link_to 'Edit', edit_booking_path(@booking), class: "text-decoration-none btn btn-dark" %>
+<%= button_to 'Delete', booking_path(@booking), method: :delete, data: { confirm: "Are you sure you want to delete?" }, class: "btn btn-danger" %>
+<%= link_to 'Go Back', { controller: 'bookings', action: 'index'}, class: "btn btn-primary" %>
