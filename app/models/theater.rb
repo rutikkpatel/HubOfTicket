@@ -1,4 +1,5 @@
 class Theater < ApplicationRecord
+  has_many :bookings
+  has_many :movies
   has_many :shows
-  has_many :movies, through: :shows
 end

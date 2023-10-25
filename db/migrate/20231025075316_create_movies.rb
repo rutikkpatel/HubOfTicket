@@ -7,26 +7,8 @@ class CreateMovies < ActiveRecord::Migration[7.1]
       t.string :movie_language
       t.date :movie_release_date
       t.string :movie_country
-      t.string :movie_generation
+      t.integer :movie_category
       t.integer :movie_rating
-      t.integer :category_id
-
-      t.timestamps
-    end
-
-    create_table :shows do |t|
-      t.date :show_date
-      t.time :show_time
-      t.belongs_to :movie
-      t.belongs_to :theater
-
-      t.timestamps
-    end
-
-    create_table :theaters do |t|
-      t.string :theater_name
-      t.string :city
-      t.text :theater_address
 
       t.timestamps
     end

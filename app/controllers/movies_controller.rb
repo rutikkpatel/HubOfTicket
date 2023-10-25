@@ -5,14 +5,13 @@ class MoviesController < ApplicationController
     if params[:category].blank?
       @movies = Movie.all.order("created_at DESC")
     else
-      @category_id = Category.find_by(category_name: params[:category]).id
-      @movies = Movie.where(category_id: @category_id).order("created_at DESC")
+      @movies = Movie.find_by(movie_title: params[:category]).id
+      @movies = Movie.where(movie_category: @movie_category).order("created_at DESC")
     end
   end
 
   def new
     @movie = Movie.new
-    @categories = Category.all.map{ |c| [c.category_name, c.id] }
   end
 
   def edit
@@ -57,6 +56,6 @@ class MoviesController < ApplicationController
     end
 
     def movie_params
-      params.require(:movie).permit(:movie_title, :movie_description, :movie_duration, :movie_language, :movie_release_date, :movie_country, :movie_generation, :movie_rating, :category_id, :image)
+      params.require(:movie).permit(:movie_title, :movie_description, :movie_duration, :movie_language, :movie_release_date, :movie_country, :movie_category, :movie_rating, :image)
     end
 end

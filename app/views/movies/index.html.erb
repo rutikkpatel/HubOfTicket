@@ -7,7 +7,7 @@
     <% @movies.each do |movie| %>
       <div class="card">
         <% if movie.image.attached? %>
-          <%= image_tag movie.image, height: "300px", width: "300px", class: "card-img-top" %>
+          <%= image_tag movie.image, height: "500px", width: "400px", class: "card-img-top" %>
         <% end %>
         <div class="card-body">
           <h5 class="card-title"><%= link_to movie.movie_title, movie_path(movie) %></h5>

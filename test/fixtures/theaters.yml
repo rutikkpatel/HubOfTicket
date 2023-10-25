@@ -1,11 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  address: MyText
+  theater_name: MyString
+  city: MyString
+  theater_address: MyText
   movie: one
 
 two:
-  name: MyString
-  address: MyText
+  theater_name: MyString
+  city: MyString
+  theater_address: MyText
   movie: two

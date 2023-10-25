@@ -8,7 +8,7 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
         <li class="nav-item">
-          <a class="nav-link" href="movies">Home Page</a>
+          <%= link_to "Home Page", movies_path, class:"nav-link" %>
         </li>
 
         <li class="nav-item">
@@ -26,8 +26,8 @@
             Movies Categories
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <% Category.all.each do |category| %>
-              <li><%= link_to category.category_name, movies_path(category: category.category_name), class:"dropdown-item" %></li>
+            <% Movie.all.each do |movie| %>
+              <li><%= link_to movie.movie_category, movies_path(movie: movie.movie_category), class:"dropdown-item" %></li>
             <% end %>
           </ul>
         </li>

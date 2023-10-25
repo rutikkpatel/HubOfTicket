@@ -24,9 +24,3 @@
     <span class="visually-hidden">Next</span>
   </button>
 </div>
-
-<div>
-  <% Category.all.each do |category| %>
-    <li><%= link_to category.category_name, movies_path(category: category.category_name), class:"dropdown-item" %></li>
-  <% end %>
-</div>

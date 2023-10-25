@@ -24,6 +24,11 @@
     <%= f.text_area :theater_address, class:"form-control" %>
   </div><br>
 
+   <div class = "field form-group" >
+    <strong><%= f.label :movie %></strong>
+    <%= f.select :movie_id, Movie.all.map { |c| [c.movie_title, c.id]}, class:"form-control" %>
+  </div><br>
+
   <div class="text-center">
     <div class = "action" >
       <%= f.button :submit, class:"btn btn-success" %>

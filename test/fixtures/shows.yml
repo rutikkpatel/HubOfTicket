@@ -2,12 +2,12 @@
 
 one:
   show_date: 2023-10-25
-  show_time: 2023-10-25 13:50:24
+  show_time: 2023-10-25 15:46:04
   movie: one
-  screen: one
+  theater: one
 
 two:
   show_date: 2023-10-25
-  show_time: 2023-10-25 13:50:24
+  show_time: 2023-10-25 15:46:04
   movie: two
-  screen: two
+  theater: two

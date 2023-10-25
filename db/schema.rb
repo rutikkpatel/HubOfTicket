@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_10_25_171202) do
+ActiveRecord::Schema[7.1].define(version: 2023_10_25_184617) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -48,16 +48,14 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_25_171202) do
     t.integer "booking_status"
     t.bigint "show_id", null: false
     t.bigint "user_id", null: false
+    t.bigint "movie_id", null: false
+    t.bigint "theater_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["movie_id"], name: "index_bookings_on_movie_id"
     t.index ["show_id"], name: "index_bookings_on_show_id"
+    t.index ["theater_id"], name: "index_bookings_on_theater_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
-  end
-
-  create_table "categories", force: :cascade do |t|
-    t.string "category_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "movies", force: :cascade do |t|
@@ -67,28 +65,17 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_25_171202) do
     t.string "movie_language"
     t.date "movie_release_date"
     t.string "movie_country"
-    t.string "movie_generation"
+    t.integer "movie_category"
     t.integer "movie_rating"
-    t.integer "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "seats", force: :cascade do |t|
-    t.integer "no_of_seats"
-    t.bigint "show_id", null: false
-    t.bigint "booking_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["booking_id"], name: "index_seats_on_booking_id"
-    t.index ["show_id"], name: "index_seats_on_show_id"
   end
 
   create_table "shows", force: :cascade do |t|
     t.date "show_date"
     t.time "show_time"
-    t.bigint "movie_id"
-    t.bigint "theater_id"
+    t.bigint "movie_id", null: false
+    t.bigint "theater_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["movie_id"], name: "index_shows_on_movie_id"
@@ -99,8 +86,10 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_25_171202) do
     t.string "theater_name"
     t.string "city"
     t.text "theater_address"
+    t.bigint "movie_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["movie_id"], name: "index_theaters_on_movie_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -122,8 +111,11 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_25_171202) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "bookings", "movies"
   add_foreign_key "bookings", "shows"
+  add_foreign_key "bookings", "theaters"
   add_foreign_key "bookings", "users"
-  add_foreign_key "seats", "bookings"
-  add_foreign_key "seats", "shows"
+  add_foreign_key "shows", "movies"
+  add_foreign_key "shows", "theaters"
+  add_foreign_key "theaters", "movies"
 end

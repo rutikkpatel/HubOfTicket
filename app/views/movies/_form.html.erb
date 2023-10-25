@@ -25,8 +25,8 @@
   </div><br>
 
   <div class = "field form-group" >
-    <strong><%= f.label :category %></strong>
-    <%= f.select :category_id, Category.all.map { |c| [c.category_name, c.id]}, class:"form-control" %>
+    <strong><%= f.label :movie_category %></strong>
+    <%= f.select :movie_category, Movie.movie_categories.keys, class:"form-select"  %>
   </div><br>
 
   <div class = "field form-group" >
@@ -47,11 +47,6 @@
   <div class = "field form-group" >
     <strong><%= f.label :movie_country %></strong>
     <%= f.text_field :movie_country, class:"form-control" %>
-  </div><br>
-
-  <div class = "field form-group" >
-    <strong><%= f.label :movie_generation %></strong>
-    <%= f.text_field :movie_generation, class:"form-control" %>
   </div><br>
 
   <div class = "field form-group" >
