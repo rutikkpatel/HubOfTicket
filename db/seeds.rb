@@ -40,6 +40,7 @@ movies = [
     movie_duration: 120,
     movie_language: "English",
     movie_release_date: Date.new(2023, 1, 1),
+    movie_country: "United States",
     movie_rating: 4,
     category: Category.first,
     theater: Theater.first,
@@ -50,6 +51,7 @@ movies = [
     movie_duration: 110,
     movie_language: "Spanish",
     movie_release_date: Date.new(2023, 2, 15),
+    movie_country: "Spain",
     movie_rating: 3,
     category: Category.second,
     theater: Theater.second,
@@ -77,3 +79,4 @@ shows = [
 
 Show.create(shows)
 puts "Shows created"
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
