@@ -29,7 +29,7 @@
           </div>
           <p class="card-title"><strong>Show Date : </strong><%= show.show_date %></p>
           <p class="card-title"><strong>Show Time : </strong><%= show.show_time.strftime("%H:%M") %></p>
-          <p class="card-title"><strong>Show Price : </strong><%= show.show_price %></p>
+          <p class="card-title"><strong>Show Price : </strong><%= number_to_currency(show.show_price) %></p>
           <p class="card-title"><strong>Theater Name : </strong><%= show.theater.theater_name %></p>
           
           <p class="card-text"><%= link_to 'Back', { controller: 'movies', action: 'index'}, class: "btn btn-danger" %></p>

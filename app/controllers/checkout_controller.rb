@@ -7,8 +7,8 @@ class CheckoutController < ApplicationController
       product_data: {
         name: movie.movie_title,
       },
-      unit_amount: show.show_price,
-      currency: 'usd',
+      unit_amount: show.show_price * 100,
+      currency: 'cad',
     })
 
     @session = Stripe::Checkout::Session.create({
