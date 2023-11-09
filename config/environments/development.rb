@@ -84,7 +84,7 @@ Rails.application.configure do
       port:                 587,
       domain:               'gmail.com',
       user_name:            'hubofticket@gmail.com',
-      password:             'fncp bpqo sjkp qxib',
+      password:             Rails.application.credentials.dig(:gmail, :pass_key),
       authentication:       'plain',
       enable_starttls_auto: true
     }
