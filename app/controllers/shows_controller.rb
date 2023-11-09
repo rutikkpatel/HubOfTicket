@@ -36,9 +36,6 @@ class ShowsController < ApplicationController
 
   def show
     @movie = Movie.find(params[:id])
-    
-    binding.pry
-    
     @shows = @movie.shows
   end
 

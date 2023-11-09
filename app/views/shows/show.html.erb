@@ -1,7 +1,4 @@
 <h2 class="text-center mt-4">Show Details</h2>
-<%= 
-binding.pry
- %>
 <% if @shows.count == 0 %>
   <div class="d-flex justify-content-center">
     <div class="my-4">
@@ -27,7 +24,7 @@ binding.pry
               <h4><span class="badge bg-primary"><strong>Available Seats : </strong><%= show.remaining_seats %></span></h4>
             </div>
             <div class="col-lg-5">
-              <h4><span class="badge"><%= link_to 'Book Now', new_booking_path(@booking), class: "text-decoration-none btn btn-success" %></span></h4>
+              <h4><span class="badge"><%= link_to 'Book Now', new_show_booking_path(show), class: "text-decoration-none btn btn-success" %></span></h4>
             </div>
           </div>
           <p class="card-title"><strong>Show Date : </strong><%= show.show_date %></p>

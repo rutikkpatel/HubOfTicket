@@ -6,14 +6,15 @@ class BookingsController < ApplicationController
   end
 
   def new
-    @booking = Booking.new
+    @show = Show.find(params[:show_id].to_i)
+    @booking = @show.bookings.new
   end
 
   def create
-    @booking = Booking.new(booking_params)
+    @booking = Booking.new(booking_params.merge!(user: current_user))
     if @booking.save
       flash[:notice] = "Booking's details Added Successfully!"
-      redirect_to bookings_path
+      redirect_to show_bookings_path
     else
       flash[:error] = @booking.errors.full_messages
       render :new
@@ -26,7 +27,7 @@ class BookingsController < ApplicationController
   def update
     if @booking.update(booking_params)
       flash[:notice] = "Booking Record Has Been Updated Successfully!"
-      redirect_to bookings_path
+      redirect_to show_bookings_path
     else
       flash[:error] = "Updation Operation Has Been Failed!"
       render :edit
@@ -39,7 +40,7 @@ class BookingsController < ApplicationController
   def destroy
     @booking = Booking.find(params[:id])
     if @booking.destroy
-      redirect_to bookings_path
+      redirect_to show_bookings_path
     else
       flash[:error] = "Deletion Operation Has Been Failed!"
     end

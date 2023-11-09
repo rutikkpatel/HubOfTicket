@@ -10,11 +10,11 @@
 <body onload="onLoaderFunc()">
 
 <div class="inputForm">
-<%= form_with(model:@booking, local: true, data: {turbo: false}) do |f| %>
+<%= form_for([@show, @booking]) do |f| %>
 
   <div class = "field form-group" >
     <strong><%= f.label :number_of_seats %></strong>
-    <%= f.number_field :number_of_seats, id: "Numseats", class:"form-control", placeholder: "Please enter the number of seats wants to book" %>
+    <%= f.number_field :number_of_seats, id: "Numseats", class:"form-control", placeholder: "Please enter the number of seats wants to book", min: "1", max:"120", oninput: "showhide()" %>
   </div><br>
 
   <div class = "field form-group" >
@@ -23,27 +23,27 @@
 
   <div class = "field form-group" >
     <strong><%= f.label :show %></strong>
-    <%= f.select :show_id, Show.all.map { |c| [c.show_date, c.id]}, class:"form-control" %>
+    <%= f.text_field :show_id, class:"form-control" %>
   </div><br>
 
   <div class = "field form-group" >
     <strong><%= f.label :movie %></strong>
-    <%= f.select :movie_id, Movie.all.map { |c| [c.movie_title, c.id]}, class:"form-control" %>
+    <%= f.text_field :movie_id, value: @show.movie_id, class:"form-control" %>
   </div><br>
 
   <div class = "field form-group" >
     <strong><%= f.label :theater %></strong>
-    <%= f.select :theater_id, Theater.all.map { |c| [c.theater_name, c.id]}, class:"form-control" %>
+    <%= f.text_field :theater_id, value: @show.theater_id, class:"form-control" %>
   </div><br>
 
   <div class = "field form-group" >
     <strong><%= f.label :user %></strong>
-    <%= f.select :user_id, User.all.map { |c| [c.email, c.id]}, class:"form-control" %>
+    <%= f.text_field :user_id, value: current_user.id, class:"form-control" %>
   </div><br>
 
   <div class="text-center">
     <div class = "action" >
-      <%= f.button "Start Selecting", class:"btn btn-success", method: :get, onclick: "takeData()" %>
+      <%#= f.button "Start Selecting", class:"btn btn-success", method: :get, onclick: "takeData()" %>
     </div>
   </div><br>
 
@@ -56,6 +56,9 @@
 <% end %>
 </div>
   
+  <%= button_to "Book Now", checkout_create_path, params: {id: @show.id}, method: :post, remote: true, class:"btn btn-danger" %>
+
+<div id="seat-value" style="display:none">
 
 <div class="seatStructure">
   <center>
@@ -281,6 +284,8 @@
   </center>
 </div>
 
+</div>
+
 </html>
 
 <script>
@@ -290,18 +295,22 @@
     $(".displayerBoxes *").prop("disabled", true); */
   }
 
-  function takeData()
-  {
-    if ( $("#Numseats").val().length == 0 )
-    {
-      alert("Please Enter your Name and Number of Seats");
-    }
-    else
-    {
-      /* $(".inputForm *").prop("disabled", true); */
-      $(".seatStructure *").prop("disabled", false);
-      document.getElementById("notification").innerHTML = "<b style='margin-bottom:0px;background:red;'>Please Select your Seats NOW!</b>";
-    }
+  // function takeData()
+  // {
+  //   if ( $("#Numseats").val().length == 0 )
+  //   {
+  //     alert("Please Enter your Name and Number of Seats");
+  //   }
+  //   else
+  //   {
+  //     /* $(".inputForm *").prop("disabled", true); */
+  //     $(".seatStructure *").prop("disabled", false);
+  //     document.getElementById("notification").innerHTML = "<b style='margin-bottom:0px;background:red;'>Please Select your Seats NOW!</b>";
+  //   }
+  // }
+
+  function showhide(){
+    document.getElementById("seat-value").style.display="block";
   }
 
   function updateTextArea() {
