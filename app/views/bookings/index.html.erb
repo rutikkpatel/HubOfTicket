@@ -12,7 +12,7 @@
   <tbody>
     <% @bookings.each do |booking| %>
       <tr>
-        <td><%= link_to booking.number_of_seats, show_path(booking) %></td>
+        <td><%= link_to booking.number_of_seats, booking_path(booking) %></td>
         <td><%= booking.booking_status %></td>
         <td><%= booking.show.show_date %></td>
         <td><%= booking.user.email %></td>
