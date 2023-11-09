@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :theaters
   resources :shows
   resources :bookings
+  resources :checkout, only: [:create]
 
   root "pages#home"
   get '/pages', to: "pages#home"

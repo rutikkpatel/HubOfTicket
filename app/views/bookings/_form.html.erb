@@ -2,17 +2,12 @@
   <h4> The following errors prevented the Booking ! </h4>
   <ul>
     <% @booking.errors.full_messages.each do |msg| %>
-      <li class = "text-danger"> <%= msg %> </li>
+      <li class = "alert alert-danger"> <%= msg %> </li>
     <% end %>
   </ul>
 <% end %>
 
 <%= form_with(model:@booking, local: true, data: {turbo: false}) do |f| %>
-
-  <div class = "field form-group" >
-    <strong><%= f.label :booking_date %></strong>
-    <%= f.date_field :booking_date, class:"form-control" %>
-  </div><br>
 
   <div class = "field form-group" >
     <strong><%= f.label :number_of_seats %></strong>
@@ -25,23 +20,19 @@
   </div><br>
 
   <div class = "field form-group" >
-    <% full_name = "#{current_user.first_name} #{current_user.last_name}" %>
-
-    <strong><%= f.label :user %></strong> <%= full_name %>
-    <%#= f.select :user_id, User.all.map { |c| [c.email, c.id]}, class:"form-control" %>
-    <%= f.hidden_field :user_id, value: current_user.id %>
+    <strong><%= f.label :movie %></strong>
+    <%= f.select :movie_id, Movie.all.map { |c| [c.movie_title, c.id]}, class:"form-control" %>
   </div><br>
 
-  <div class="field form-group">
-  <strong><%= f.label :movie %></strong>
-  <%= f.collection_select :movie_id, Movie.all, :id, :movie_title, { prompt: "Select a Movie" }, class: "form-control" %>
-</div><br>
+  <div class = "field form-group" >
+    <strong><%= f.label :theater %></strong>
+    <%= f.select :theater_id, Theater.all.map { |c| [c.theater_name, c.id]}, class:"form-control" %>
+  </div><br>
 
-<div class="field form-group">
-  <strong><%= f.label :theater %></strong>
-  <%= f.collection_select :theater_id, Theater.all, :id, :theater_name, { prompt: "Select a Theater" }, class: "form-control" %>
-</div><br>
-
+  <div class = "field form-group" >
+    <strong><%= f.label :user %></strong>
+    <%= f.select :user_id, User.all.map { |c| [c.email, c.id]}, class:"form-control" %>
+  </div><br>
 
   <div class="text-center">
     <div class = "action" >
@@ -49,7 +40,7 @@
     </div>
   </div><br>
 
-  <div class="text-center">
+  <div class="text-center mb-4">
     <div class = "field form-group" >
       <%= link_to 'Dismiss', { controller: 'bookings', action: 'index'}, class: "btn btn-danger" %>
     </div>

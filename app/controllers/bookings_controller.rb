@@ -15,7 +15,7 @@ class BookingsController < ApplicationController
       flash[:notice] = "Booking's details Added Successfully!"
       redirect_to bookings_path
     else
-      flash[:error] = "Booking can't be created!"
+      flash[:error] = @booking.errors.full_messages
       render :new
     end
   end
@@ -25,7 +25,7 @@ class BookingsController < ApplicationController
 
   def update
     if @booking.update(booking_params)
-      flash[:notice] = "bboking Record Has Been Updated Successfully!"
+      flash[:notice] = "Booking Record Has Been Updated Successfully!"
       redirect_to bookings_path
     else
       flash[:error] = "Updation Operation Has Been Failed!"

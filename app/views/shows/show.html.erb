@@ -1,22 +1,46 @@
-<h2 class="text-center mt-4">Show Details</h2><hr>
+<h2 class="text-center mt-4">Show Details</h2>
+<%= 
+binding.pry
+ %>
+<% if @shows.count == 0 %>
+  <div class="d-flex justify-content-center">
+    <div class="my-4">
+      <img src="https://cdn.dribbble.com/users/88213/screenshots/8560585/media/7263b7aaa8077a322b0f12a7cd7c7404.png?compress=1&resize=800x600&vertical=top" alt="image couldn't loaded!">
+    </div>
+  </div>
+  <div class="d-flex justify-content-center">
+    <div class="my-5">
+      <%= link_to 'Back', { controller: 'movies', action: 'index'}, class: "btn btn-primary" %>
+    </div>
+  </div>
+<% else %>
 
-<% @shows.each do |show| %>
-<div class="container">
-  <div class="row justify-content-md-center">
-    <div class="col-6 mt-4">
-      <div class=" text-center mb-5">
-          <p class="card-title"><strong>Show Date : </strong><%= show.show_date  %><p>
-          <p class="card-title"><strong>Show Time : </strong><%= show.show_time  %><p>
-          <p class="card-text"><strong>Movie : </strong><%= show.movie.movie_title %></p>
-          <p class="card-text"><strong>Theater Name : </strong><%= show.theater.theater_name %></p>
+
+  <% @shows.each do |show| %>
+    <div class="justify-content-center mt-4">
+      <div class="card shadow mb-3">
+        <div class="card-body">      
+          <h4 class="card-title"><%= show.movie.movie_title %></h4>
+          <div class="row mt-3">
+            <div class="col-lg-7">
+              <h4><span class="badge bg-primary"><strong>Total Seats : </strong><%= show.total_seats %></span></h4>
+              <h4><span class="badge bg-primary"><strong>Available Seats : </strong><%= show.remaining_seats %></span></h4>
+            </div>
+            <div class="col-lg-5">
+              <h4><span class="badge"><%= link_to 'Book Now', new_booking_path(@booking), class: "text-decoration-none btn btn-success" %></span></h4>
+            </div>
+          </div>
+          <p class="card-title"><strong>Show Date : </strong><%= show.show_date %></p>
+          <p class="card-title"><strong>Show Time : </strong><%= show.show_time.strftime("%H:%M") %></p>
+          <p class="card-title"><strong>Show Price : </strong><%= show.show_price %></p>
+          <p class="card-title"><strong>Theater Name : </strong><%= show.theater.theater_name %></p>
           
-          <p class="card-text"><%= link_to 'Add New', new_show_path(show), class: "text-decoration-none btn btn-secondary" %></p>
-          <p class="card-text"><%= link_to 'Edit', edit_show_path(show), class: "text-decoration-none btn btn-dark" %></p>
-          <p class="card-text"><%= button_to 'Delete', show_path(show), method: :delete, data: { confirm: "Are you sure you want to delete?" }, class: "btn btn-danger" %></p>
-          <p class="card-text"> <%= link_to 'Back', { controller: 'shows', action: 'index'}, class: "btn btn-primary" %> </p>
+          <p class="card-text"><%= link_to 'Back', { controller: 'movies', action: 'index'}, class: "btn btn-danger" %></p>
         </div>
       </div>
     </div>
-  </div>
-</div>
-<%end%>
+    <div class="col-lg-4 mt-4">
+    </div>
+  <%end%>
+
+<% end %>

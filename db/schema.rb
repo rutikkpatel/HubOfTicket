@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_10_25_194701) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_09_213943) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -43,7 +43,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_25_194701) do
   end
 
   create_table "bookings", force: :cascade do |t|
-    t.date "booking_date"
     t.integer "number_of_seats"
     t.integer "booking_status"
     t.bigint "show_id", null: false
@@ -52,6 +51,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_25_194701) do
     t.bigint "theater_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "selected_seats"
     t.index ["movie_id"], name: "index_bookings_on_movie_id"
     t.index ["show_id"], name: "index_bookings_on_show_id"
     t.index ["theater_id"], name: "index_bookings_on_theater_id"
@@ -70,7 +70,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_25_194701) do
     t.integer "movie_duration"
     t.string "movie_language"
     t.date "movie_release_date"
-    t.string "movie_country"
     t.integer "movie_rating"
     t.integer "category_id"
     t.bigint "theater_id"
@@ -86,6 +85,9 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_25_194701) do
     t.bigint "theater_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "total_seats"
+    t.integer "show_price"
+    t.integer "remaining_seats"
     t.index ["movie_id"], name: "index_shows_on_movie_id"
     t.index ["theater_id"], name: "index_shows_on_theater_id"
   end

@@ -1,5 +1,6 @@
 class ShowsController < ApplicationController
   before_action :set_show, only: [:edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:show]
 
   def index
     @shows = Show.all
@@ -35,6 +36,9 @@ class ShowsController < ApplicationController
 
   def show
     @movie = Movie.find(params[:id])
+    
+    binding.pry
+    
     @shows = @movie.shows
   end
 
@@ -53,6 +57,6 @@ class ShowsController < ApplicationController
   end
 
   def show_params
-    params.require(:show).permit(:show_date, :show_time, :movie_id, :theater_id)
+    params.require(:show).permit(:show_date, :show_time, :total_seats, :remaining_seats,:show_price, :movie_id, :theater_id)
   end
 end

@@ -1,118 +1,110 @@
-<section class="vh-100 bg-image"
-  style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
-  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
-    <div class="container py-5 h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-12 col-lg-9 col-xl-7">
-          <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
-            <div class="card-body p-4 p-md-5">
-              <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Sign Up</h3>
-              
-              <%= form_for(resource, as: resource_name, data: { turbo: false }, url: registration_path(resource_name)) do |f| %>
-              <%= render "devise/shared/error_messages", resource: resource %>
+<div class="mask d-flex align-items-center h-100 gradient-custom-3">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-lg-9 col-xl-7">
+        <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+          <div class="card-body p-4 p-md-5">
+            <h2 class="mb-4 pb-2 pb-md-0 mb-md-5">Sign Up</h2>
+            
+            <%= form_for(resource, as: resource_name, data: { turbo: false }, url: registration_path(resource_name)) do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
 
-                <div class="row">
-                  <div class="col-md-6 mb-4">
+              <div class="row">
+                <div class="col-md-6 mb-4">
 
-                    <div class="form-outline">
-                      <%= f.text_field :first_name, autofocus: true, id:"firstName", class:"form-control form-control-lg" %>
-                      <label class="form-label" for="firstName">First Name</label>
-                    </div>
-
+                  <div class="form-outline">
+                    <%= f.text_field :first_name, autofocus: true, id:"firstName", class:"form-control form-control-lg" %>
+                    <label class="form-label" for="firstName">First Name</label>
                   </div>
-                  <div class="col-md-6 mb-4">
 
-                    <div class="form-outline">
-                      <%= f.text_field :last_name, autofocus: true, id:"lastName", class:"form-control form-control-lg" %>
-                      <label class="form-label" for="lastName">Last Name</label>
-                    </div>
-
-                  </div>
                 </div>
+                <div class="col-md-6 mb-4">
 
-                <div class="row">
-                  <div class="col-md-6 mb-4 d-flex align-items-center">
-
-                    <div class="form-outline datepicker w-100">
-                      <%= f.date_field :birth_date, autofocus: true, id:"birthdayDate", class:"form-control form-control-lg" %>
-                      <label for="birthdayDate" class="form-label">Birth Date</label>
-                    </div>
-
+                  <div class="form-outline">
+                    <%= f.text_field :last_name, autofocus: true, id:"lastName", class:"form-control form-control-lg" %>
+                    <label class="form-label" for="lastName">Last Name</label>
                   </div>
-                  <div class="col-md-6 mb-4">
 
-                    <h6 class="mb-2 pb-1">Gender: </h6>
-
-                    <div class="form-check form-check-inline">
-                      <%= f.label :gender_male, "Male" %>
-                      <%= f.radio_button :gender, "Male" %>
-                    </div>
-
-                    <div class="form-check form-check-inline">
-                      <%= f.label :gender_female, "Female" %>
-                      <%= f.radio_button :gender, "Female" %>
-                    </div>
-
-                    <div class="form-check form-check-inline">
-                      <%= f.label :gender_other, "Other" %>
-                      <%= f.radio_button :gender, "Other" %>
-                    </div>
-
-                  </div>
                 </div>
+              </div>
 
-                <div class="row">
-                  <div class="col-md-6 mb-4 pb-2">
+              <div class="row">
+                <div class="col-md-6 mb-4 d-flex align-items-center">
 
-                    <div class="form-outline">
-                      <%= f.text_field :email, autofocus: true, autocomplete: "email", id:"emailAddress", class:"form-control form-control-lg" %>
-                      <label class="form-label" for="emailAddress">Email</label>
-                    </div>
-
+                  <div class="form-outline datepicker w-100">
+                    <%= f.date_field :birth_date, autofocus: true, id:"birthdayDate", class:"form-control form-control-lg" %>
+                    <label for="birthdayDate" class="form-label">Birth Date</label>
                   </div>
-                  <div class="col-md-6 mb-4 pb-2">
 
-                    <div class="form-outline">
-                      <%= f.telephone_field :contact_number, autofocus: true, id:"phoneNumber", class:"form-control form-control-lg" %>
-                      <label class="form-label" for="phoneNumber">Phone Number</label>
-                    </div>
-
-                  </div>
                 </div>
+                <div class="col-md-6 mb-4">
 
-                <div class="row">
-                  <div class="col-md-6 mb-4 pb-2">
+                  <h6 class="mb-2 pb-1">Gender </h6>
 
-                    <div class="form-outline">
-                      <% if @minimum_password_length %>
-                        <em>(<%= @minimum_password_length %> minimum characters)</em>
-                      <% end %><br />
-                      <%= f.password_field :password, autofocus: true, autocomplete: "new-password", id:"Password", class:"form-control form-control-lg" %>
-                      <label class="form-label" for="Password">Password</label>
-                    </div>
-
+                  <div class="form-check form-check-inline">
+                    <%= f.label :gender_male, "Male" %>
+                    <%= f.radio_button :gender, "Male" %>
                   </div>
-                  <div class="col-md-6 mb-4 pb-2">
 
-                    <div class="form-outline">
-                      <em>(re-enter your password)</em>
-                      <%= f.password_field :password_confirmation, autofocus: true, autocomplete: "new-password", id:"confirmPassword", class:"form-control form-control-lg" %>
-                      <label class="form-label" for="confirmPassword">Confirm Password</label>
-                    </div>
-
+                  <div class="form-check form-check-inline">
+                    <%= f.label :gender_female, "Female" %>
+                    <%= f.radio_button :gender, "Female" %>
                   </div>
+
                 </div>
+              </div>
 
-                <div class="mt-4 pt-2">
-                  <%= f.submit "Sign up", class:"btn btn-primary btn-lg" %>
+              <div class="row">
+                <div class="col-md-6 mb-4 pb-2">
+
+                  <div class="form-outline">
+                    <%= f.text_field :email, autofocus: true, autocomplete: "email", id:"emailAddress", class:"form-control form-control-lg" %>
+                    <label class="form-label" for="emailAddress">Email</label>
+                  </div>
+
                 </div>
+                <div class="col-md-6 mb-4 pb-2">
 
-              <% end %>
+                  <div class="form-outline">
+                    <%= f.telephone_field :contact_number, autofocus: true, id:"phoneNumber", class:"form-control form-control-lg" %>
+                    <label class="form-label" for="phoneNumber">Phone Number</label>
+                  </div>
 
-            </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-4 pb-2">
+
+                  <div class="form-outline">
+                    <% if @minimum_password_length %>
+                      <em>(<%= @minimum_password_length %> minimum characters)</em>
+                    <% end %><br />
+                    <%= f.password_field :password, autofocus: true, autocomplete: "new-password", id:"Password", class:"form-control form-control-lg" %>
+                    <label class="form-label" for="Password">Password</label>
+                  </div>
+
+                </div>
+                <div class="col-md-6 mb-4 pb-2">
+
+                  <div class="form-outline">
+                    <em>(re-enter your password)</em>
+                    <%= f.password_field :password_confirmation, autofocus: true, autocomplete: "new-password", id:"confirmPassword", class:"form-control form-control-lg" %>
+                    <label class="form-label" for="confirmPassword">Confirm Password</label>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="mt-4 pt-2">
+                <%= f.submit "Sign up", class:"btn btn-primary btn-lg" %>
+              </div>
+
+            <% end %>
+
           </div>
         </div>
       </div>
     </div>
   </div>
-</section>
+</div>

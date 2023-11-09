@@ -1,5 +1,6 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: [:edit, :update, :show, :destroy]
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
     if params[:category].blank?
@@ -57,6 +58,6 @@ class MoviesController < ApplicationController
     end
 
     def movie_params
-      params.require(:movie).permit(:movie_title, :movie_description, :movie_duration, :movie_language, :movie_release_date, :movie_country, :movie_rating, :category_id, :image, :theater_id)
+      params.require(:movie).permit(:movie_title, :movie_description, :movie_duration, :movie_language, :movie_release_date, :movie_rating, :category_id, :image, :theater_id)
     end
 end

@@ -1,3 +1,333 @@
 <h2 class = "text-center mt-4" >Add Booking</h2><br>
 
 <%= render 'form' %>
+
+<br><br>
+
+<html>
+<head>
+  <%= stylesheet_link_tag "seat_style" %>
+<head>
+
+<body onload="onLoaderFunc()">
+
+<div class="inputForm">
+<%= form_with(model:@booking, local: true, data: {turbo: false}) do |f| %>
+
+  Name *: <input type="text" id="Username" required>
+    <div class = "field form-group" >
+      <strong><%= f.label :number_of_seats %></strong>
+      <%= f.number_field :number_of_seats, id: "Numseats", class:"form-control" %>
+    </div><br>
+  <button onclick="takeData()">Start Selecting</button>
+<% end %>
+</div>
+  
+
+<div class="seatStructure">
+  <center>
+    <table id="seatsBlock">
+      <p id="notification"></p>
+        <tr>
+          <td colspan="14"><div class="screen">THEATER SCREEN</div></td>
+          <td rowspan="20">
+            <div class="smallBox greenBox">Selected Seat</div> <br/>
+            <div class="smallBox redBox">Reserved Seat</div><br/>
+            <div class="smallBox emptyBox">Empty Seat</div><br/>
+          </td>
+          <br/>
+        </tr>
+        
+      <tr>
+        <td></td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td></td>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+        <td>10</td>
+        <td>11</td>
+        <td>12</td>
+      </tr>
+        
+      <tr>
+        <td>A</td>
+        <td><input type="checkbox" class="form-check-input" value="A1"></td>
+        <td><input type="checkbox" class="form-check-input" value="A2"></td>
+        <td><input type="checkbox" class="form-check-input" value="A3"></td>
+        <td><input type="checkbox" class="form-check-input" value="A4"></td>
+        <td><input type="checkbox" class="form-check-input" value="A5"></td>
+        <td class="seatGap"></td>
+        <td><input type="checkbox" class="form-check-input" value="A6"></td>
+        <td><input type="checkbox" class="form-check-input" value="A7"></td>
+        <td><input type="checkbox" class="form-check-input" value="A8"></td>
+        <td><input type="checkbox" class="form-check-input" value="A9"></td>
+        <td><input type="checkbox" class="form-check-input" value="A10"></td>
+        <td><input type="checkbox" class="form-check-input" value="A11"></td>
+        <td><input type="checkbox" class="form-check-input" value="A12"></td>
+      </tr>
+        
+      <tr>
+        <td>B</td>
+        <td><input type="checkbox" class="form-check-input" value="B1"></td>
+        <td><input type="checkbox" class="form-check-input" value="B2"></td>
+        <td><input type="checkbox" class="form-check-input" value="B3"></td>
+        <td><input type="checkbox" class="form-check-input" value="B4"></td>
+        <td><input type="checkbox" class="form-check-input" value="B5"></td>
+        <td></td>
+        <td><input type="checkbox" class="form-check-input" value="B6"></td>
+        <td><input type="checkbox" class="form-check-input" value="B7"></td>
+        <td><input type="checkbox" class="form-check-input" value="B8"></td>
+        <td><input type="checkbox" class="form-check-input" value="B9"></td>
+        <td><input type="checkbox" class="form-check-input" value="B10"></td>
+        <td><input type="checkbox" class="form-check-input" value="B11"></td>
+        <td><input type="checkbox" class="form-check-input" value="B12"></td>
+      </tr>
+        
+      <tr>
+        <td>C</td>
+        <td><input type="checkbox" class="form-check-input" value="C1"></td>
+        <td><input type="checkbox" class="form-check-input" value="C2"></td>
+        <td><input type="checkbox" class="form-check-input" value="C3"></td>
+        <td><input type="checkbox" class="form-check-input" value="C4"></td>
+        <td><input type="checkbox" class="form-check-input" value="C5"></td>
+        <td></td>
+        <td><input type="checkbox" class="form-check-input" value="C6"></td>
+        <td><input type="checkbox" class="form-check-input" value="C7"></td>
+        <td><input type="checkbox" class="form-check-input" value="C8"></td>
+        <td><input type="checkbox" class="form-check-input" value="C9"></td>
+        <td><input type="checkbox" class="form-check-input" value="C10"></td>
+        <td><input type="checkbox" class="form-check-input" value="C11"></td>
+        <td><input type="checkbox" class="form-check-input" value="C12"></td>
+      </tr>
+        
+      <tr>
+        <td>D</td>
+        <td><input type="checkbox" class="form-check-input" value="D1"></td>
+        <td><input type="checkbox" class="form-check-input" value="D2"></td>
+        <td><input type="checkbox" class="form-check-input" value="D3"></td>
+        <td><input type="checkbox" class="form-check-input" value="D4"></td>
+        <td><input type="checkbox" class="form-check-input" value="D5"></td>
+        <td></td>
+        <td><input type="checkbox" class="form-check-input" value="D6"></td>
+        <td><input type="checkbox" class="form-check-input" value="D7"></td>
+        <td><input type="checkbox" class="form-check-input" value="D8"></td>
+        <td><input type="checkbox" class="form-check-input" value="D9"></td>
+        <td><input type="checkbox" class="form-check-input" value="D10"></td>
+        <td><input type="checkbox" class="form-check-input" value="D11"></td>
+        <td><input type="checkbox" class="form-check-input" value="D12"></td>
+      </tr>
+        
+      <tr>
+        <td>E</td>
+        <td><input type="checkbox" class="form-check-input" value="E1"></td>
+        <td><input type="checkbox" class="form-check-input" value="E2"></td>
+        <td><input type="checkbox" class="form-check-input" value="E3"></td>
+        <td><input type="checkbox" class="form-check-input" value="E4"></td>
+        <td><input type="checkbox" class="form-check-input" value="E5"></td>
+        <td></td>
+        <td><input type="checkbox" class="form-check-input" value="E6"></td>
+        <td><input type="checkbox" class="form-check-input" value="E7"></td>
+        <td><input type="checkbox" class="form-check-input" value="E8"></td>
+        <td><input type="checkbox" class="form-check-input" value="E9"></td>
+        <td><input type="checkbox" class="form-check-input" value="E10"></td>
+        <td><input type="checkbox" class="form-check-input" value="E11"></td>
+        <td><input type="checkbox" class="form-check-input" value="E12"></td>
+      </tr>
+        
+      <tr class="seatVGap"></tr>
+        
+      <tr>
+        <td>F</td>
+        <td><input type="checkbox" class="form-check-input" value="F1"></td>
+        <td><input type="checkbox" class="form-check-input" value="F2"></td>
+        <td><input type="checkbox" class="form-check-input" value="F3"></td>
+        <td><input type="checkbox" class="form-check-input" value="F4"></td>
+        <td><input type="checkbox" class="form-check-input" value="F5"></td>
+        <td></td>
+        <td><input type="checkbox" class="form-check-input" value="F6"></td>
+        <td><input type="checkbox" class="form-check-input" value="F7"></td>
+        <td><input type="checkbox" class="form-check-input" value="F8"></td>
+        <td><input type="checkbox" class="form-check-input" value="F9"></td>
+        <td><input type="checkbox" class="form-check-input" value="F10"></td>
+        <td><input type="checkbox" class="form-check-input" value="F11"></td>
+        <td><input type="checkbox" class="form-check-input" value="F12"></td>
+      </tr>
+        
+      <tr>
+        <td>G</td>
+        <td><input type="checkbox" class="form-check-input" value="G1"></td>
+        <td><input type="checkbox" class="form-check-input" value="G2"></td>
+        <td><input type="checkbox" class="form-check-input" value="G3"></td>
+        <td><input type="checkbox" class="form-check-input" value="G4"></td>
+        <td><input type="checkbox" class="form-check-input" value="G5"></td>
+        <td></td>
+        <td><input type="checkbox" class="form-check-input" value="G6"></td>
+        <td><input type="checkbox" class="form-check-input" value="G7"></td>
+        <td><input type="checkbox" class="form-check-input" value="G8"></td>
+        <td><input type="checkbox" class="form-check-input" value="G9"></td>
+        <td><input type="checkbox" class="form-check-input" value="G10"></td>
+        <td><input type="checkbox" class="form-check-input" value="G11"></td>
+        <td><input type="checkbox" class="form-check-input" value="G12"></td>
+      </tr>
+        
+      <tr>
+        <td>H</td>
+        <td><input type="checkbox" class="form-check-input" value="H1"></td>
+        <td><input type="checkbox" class="form-check-input" value="H2"></td>
+        <td><input type="checkbox" class="form-check-input" value="H3"></td>
+        <td><input type="checkbox" class="form-check-input" value="H4"></td>
+        <td><input type="checkbox" class="form-check-input" value="H5"></td>
+        <td></td>
+        <td><input type="checkbox" class="form-check-input" value="H6"></td>
+        <td><input type="checkbox" class="form-check-input" value="H7"></td>
+        <td><input type="checkbox" class="form-check-input" value="H8"></td>
+        <td><input type="checkbox" class="form-check-input" value="H9"></td>
+        <td><input type="checkbox" class="form-check-input" value="H10"></td>
+        <td><input type="checkbox" class="form-check-input" value="H11"></td>
+        <td><input type="checkbox" class="form-check-input" value="H12"></td>
+      </tr>
+        
+      <tr>
+        <td>I</td>
+        <td><input type="checkbox" class="form-check-input" value="I1"></td>
+        <td><input type="checkbox" class="form-check-input" value="I2"></td>
+        <td><input type="checkbox" class="form-check-input" value="I3"></td>
+        <td><input type="checkbox" class="form-check-input" value="I4"></td>
+        <td><input type="checkbox" class="form-check-input" value="I5"></td>
+        <td></td>
+        <td><input type="checkbox" class="form-check-input" value="I6"></td>
+        <td><input type="checkbox" class="form-check-input" value="I7"></td>
+        <td><input type="checkbox" class="form-check-input" value="I8"></td>
+        <td><input type="checkbox" class="form-check-input" value="I9"></td>
+        <td><input type="checkbox" class="form-check-input" value="I10"></td>
+        <td><input type="checkbox" class="form-check-input" value="I11"></td>
+        <td><input type="checkbox" class="form-check-input" value="I12"></td>
+      </tr>
+        
+      <tr>
+        <td>J</td>
+        <td><input type="checkbox" class="form-check-input" value="J1"></td>
+        <td><input type="checkbox" class="form-check-input" value="J2"></td>
+        <td><input type="checkbox" class="form-check-input" value="J3"></td>
+        <td><input type="checkbox" class="form-check-input" value="J4"></td>
+        <td><input type="checkbox" class="form-check-input" value="J5"></td>
+        <td></td>
+        <td><input type="checkbox" class="form-check-input" value="J6"></td>
+        <td><input type="checkbox" class="form-check-input" value="J7"></td>
+        <td><input type="checkbox" class="form-check-input" value="J8"></td>
+        <td><input type="checkbox" class="form-check-input" value="J9"></td>
+        <td><input type="checkbox" class="form-check-input" value="J10"></td>
+        <td><input type="checkbox" class="form-check-input" value="J11"></td>
+        <td><input type="checkbox" class="form-check-input" value="J12"></td>
+      </tr>
+    </table>
+      
+    <br/><button onclick="updateTextArea()">Confirm Selection</button>
+  </center>
+</div>
+      
+<br/><br/>
+
+<div class="displayerBoxes">
+  <center>
+    <table class="Displaytable">
+      <tr>
+        <th>Name</th>
+        <th>Number of Seats</th>
+        <th>Seats</th>
+      </tr>
+      <tr>
+        <td><textarea id="nameDisplay"></textarea></td>
+        <td><textarea id="NumberDisplay"></textarea></td>
+        <td><textarea id="seatsDisplay"></textarea></td>
+      </tr>
+    </table>
+  </center>
+</div>
+
+</html>
+
+<script>
+  function onLoaderFunc()
+  {
+    $(".seatStructure *").prop("disabled", true);
+    $(".displayerBoxes *").prop("disabled", true);
+  }
+
+  function takeData()
+  {
+    if (( $("#Username").val().length == 0 ) || ( $("#Numseats").val().length == 0 ))
+    {
+      alert("Please Enter your Name and Number of Seats");
+    }
+    else
+    {
+      $(".inputForm *").prop("disabled", true);
+      $(".seatStructure *").prop("disabled", false);
+      document.getElementById("notification").innerHTML = "<b style='margin-bottom:0px;background:red;'>Please Select your Seats NOW!</b>";
+    }
+  }
+
+  function updateTextArea() {
+    if ($("input:checked").length == ($("#Numseats").val()))
+    {
+      $(".seatStructure *").prop("disabled", true);
+      
+      var allNameVals = [];
+      var allNumberVals = [];
+      var allSeatsVals = [];
+    
+      //Storing in Array
+      allNameVals.push($("#Username").val());
+      allNumberVals.push($("#Numseats").val());
+      $('#seatsBlock :checked').each(function() {
+        allSeatsVals.push($(this).val());
+      });
+      
+      //Displaying 
+      $('#nameDisplay').val(allNameVals);
+      $('#NumberDisplay').val(allNumberVals);
+      $('#seatsDisplay').val(allSeatsVals);
+    }
+    else
+    {
+      alert("Please select " + ($("#Numseats").val()) + " seats")
+    }
+    }
+
+  function myFunction() {
+    alert($("input:checked").length);
+  }
+
+  function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+  }
+
+  $(":checkbox").click(function() {
+    if ($("input:checked").length == ($("#Numseats").val())) {
+      $(":checkbox").prop('disabled', true);
+      $(':checked').prop('disabled', false);
+    }
+    else
+    {
+      $(":checkbox").prop('disabled', false);
+    }
+  });
+</script>

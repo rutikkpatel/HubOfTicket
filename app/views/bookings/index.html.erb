@@ -1,7 +1,6 @@
 <table class="table table-bordered m-4 mb-5">
   <thead>
     <tr>
-      <th>Booking Date</th>
       <th>Number of Seats</th>
       <th>Booking Status</th>
       <th>Show</th>
@@ -13,8 +12,7 @@
   <tbody>
     <% @bookings.each do |booking| %>
       <tr>
-        <td><%= link_to booking.booking_date, booking_path(booking.show) %></td>
-        <td><%= booking.number_of_seats %></td>
+        <td><%= link_to booking.number_of_seats, show_path(booking) %></td>
         <td><%= booking.booking_status %></td>
         <td><%= booking.show.show_date %></td>
         <td><%= booking.user.email %></td>
