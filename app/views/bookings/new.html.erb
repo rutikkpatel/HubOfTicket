@@ -14,11 +14,11 @@
 
   <div class = "field form-group" >
     <strong><%= f.label :number_of_seats %></strong>
-    <%= f.number_field :number_of_seats, id: "Numseats", class:"form-control" %>
+    <%= f.number_field :number_of_seats, id: "Numseats", class:"form-control", placeholder: "Please enter the number of seats wants to book" %>
   </div><br>
 
   <div class = "field form-group" >
-    <%= f.hidden_field :selected_seats, class:"form-control" %>
+    <%= f.hidden_field :selected_seats, class:"form-control", id: "selected_nof_seats" %>
   </div><br>
 
   <div class = "field form-group" >
@@ -320,6 +320,7 @@
       //Displaying 
       $('#NumberDisplay').val(allNumberVals);
       $('#seatsDisplay').val(allSeatsVals);
+      document.getElementById("selected_nof_seats").value = document.getElementById("seatsDisplay").value
     }
     else
     {
