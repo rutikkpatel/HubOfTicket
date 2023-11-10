@@ -2,6 +2,9 @@ class CheckoutController < ApplicationController
   def create
     show = Show.find(params[:id])
     movie = Movie.find(show.movie_id)
+    
+    # Customer ID stored in current_user.stripe_customer_id
+    customer_id = current_user.stripe_customer_id
 
     price = Stripe::Price.create({
       product_data: {
@@ -15,8 +18,9 @@ class CheckoutController < ApplicationController
       payment_method_types: ['card'],
       line_items: [{
         price: price.id,
-        quantity: 1
+        quantity: 1,
       }],
+      customer: customer_id,
       mode: 'payment',
       success_url: root_url,
       cancel_url: root_url,
