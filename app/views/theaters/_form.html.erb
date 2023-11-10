@@ -2,7 +2,7 @@
   <h4> The following errors prevented the Theater ! </h4>
   <ul>
     <% @theater.errors.full_messages.each do |msg| %>
-      <li class = "text-danger"> <%= msg %> </li>
+      <li class = "alert alert-danger"> <%= msg %> </li>
     <% end %>
   </ul>
 <% end %>
@@ -35,7 +35,7 @@
     </div>
   </div><br>
 
-  <div class="text-center">
+  <div class="text-center mb-4">
     <div class = "field form-group" >
       <%= link_to 'Dismiss', { controller: 'theaters', action: 'index'}, class: "btn btn-danger" %>
     </div>

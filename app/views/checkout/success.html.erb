@@ -1,0 +1,21 @@
+<h1>Payment Succeed</h1>
+<hr>
+Checkout Status: <%= @session_with_expand.payment_status %>
+<br>
+  Amount Paid: 
+  <%= @session_with_expand.amount_total/100.to_f %>
+  <%= @session_with_expand.currency %><br>
+  Country: <%= @session_with_expand.customer_details.address.country %><br>
+  City: <%= @session_with_expand.customer_details.address.city %><br>
+  Address Line 1: <%= @session_with_expand.customer_details.address.line1 %><br>
+  Address Line 2: <%= @session_with_expand.customer_details.address.line2 %><br>
+  Customer Name: <%= @session_with_expand.customer_details.name %><br>
+  Customer Email: <%= @session_with_expand.customer_details.email %><br>
+
+<hr>
+<%@session_with_expand.line_items.data.each do |line_item| %>
+  Movie Name: <%= line_item.description %><br>
+  Number of Seats: <%= line_item.quantity %><br>
+<%end %>
+
+<%= @session_with_expand.payment_intent %>
