@@ -10,7 +10,7 @@
 <body onload="onLoaderFunc()">
 
 <div class="inputForm">
-<%= form_for([@show, @booking]) do |f| %>
+<%= form_with(model: [@show,@booking], url:"/checkout/create", method: :post, local: false) do |f| %>
 
   <div class = "field form-group" >
     <strong><%= f.label :number_of_seats %></strong>
@@ -43,20 +43,15 @@
 
   <div class="text-center">
     <div class = "action" >
-      <%#= f.button "Start Selecting", class:"btn btn-success", method: :get, onclick: "takeData()" %>
+      <%= f.button "Pay Now", class:"btn btn-success", method: :get, onclick: "takeData()" %>
     </div>
   </div><br>
 
-  <div class="text-center">
-    <div class = "action" >
-      <%= f.button :submit, class:"btn btn-success" %>
-    </div>
-  </div><br>
-
+    <%#= button_to "Book Now", checkout_create_path, params: {id: @show.id}, method: :post, remote: true, class:"btn btn-danger" %>
 <% end %>
 </div>
   
-  <%= button_to "Book Now", checkout_create_path, params: {id: @show.id}, method: :post, remote: true, class:"btn btn-danger" %>
+  <%#= button_to "Book Now", checkout_create_path, params: {id: @show.id}, method: :post, remote: true, class:"btn btn-danger" %>
 
 <div id="seat-value" style="display:none">
 
