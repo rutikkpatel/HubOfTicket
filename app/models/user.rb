@@ -17,7 +17,7 @@ class User < ApplicationRecord
   validates :first_name, :last_name, :gender, presence: true
   validates :contact_number, presence: true, uniqueness: true, numericality: {only_integer: true}
 
-  has_many :bookings
+  has_many :bookings, dependent: :destroy
 
   def to_s
     email
