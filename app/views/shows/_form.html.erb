@@ -11,22 +11,22 @@
 
   <div class = "field form-group" >
     <strong><%= f.label :show_date %></strong>
-    <%= f.date_field :show_date, class:"form-control" %>
+    <%= f.date_field :show_date, class:"form-control", required: true %>
   </div><br>
 
   <div class = "field form-group" >
     <strong><%= f.label :show_time %></strong>
-    <%= f.time_field :show_time, class:"form-control" %>
+    <%= f.time_field :show_time, class:"form-control", required: true %>
   </div><br>
 
   <div class = "field form-group" >
     <strong><%= f.label :seats %></strong>
-    <%= f.number_field :total_seats, class:"form-control" %>
+    <%= f.number_field :total_seats, class:"form-control", required: true %>
   </div><br>
 
   <div class = "field form-group" >
     <strong><%= f.label :show_price %></strong>
-    <%= f.number_field :show_price, class:"form-control" %>
+    <%= f.number_field :show_price, class:"form-control", required: true %>
   </div><br>
 
   <div class = "field form-group" >

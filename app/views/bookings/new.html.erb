@@ -14,7 +14,7 @@
 
   <div class = "field form-group" >
     <strong><%= f.label :number_of_seats %></strong>
-    <%= f.number_field :number_of_seats, id: "Numseats", class:"form-control", placeholder: "Please enter the number of seats wants to book", min: "1", max:"120", oninput: "showhide()" %>
+    <%= f.number_field :number_of_seats, id: "Numseats", class:"form-control", placeholder: "Please enter the number of seats wants to book", min: "1", max:"120", oninput: "showhide()", required: true %>
   </div><br>
 
   <div class = "field form-group" >
