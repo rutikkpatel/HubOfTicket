@@ -16,37 +16,37 @@
 
   <div class = "field form-group" >
     <strong><%= f.label :movie_title %></strong>
-    <%= f.text_field :movie_title, class:"form-control" %>
+    <%= f.text_field :movie_title, class:"form-control", required: true %>
   </div><br>
 
   <div class = "field form-group" >
     <strong><%= f.label :movie_description %></strong>
-    <%= f.text_area :movie_description, class:"form-control" %>
+    <%= f.text_area :movie_description, class:"form-control", required: true %>
   </div><br>
 
   <div class = "field form-group" >
     <strong><%= f.label :category %></strong>
-    <%= f.select :category_id, Category.all.map { |c| [c.category_name, c.id]}, class:"form-control" %>
+    <%= f.select :category_id, Category.all.map { |c| [c.category_name, c.id]}, class:"form-control", required: true %>
   </div><br>
 
   <div class = "field form-group" >
     <strong><%= f.label :movie_duration%></strong>
-    <%= f.number_field :movie_duration, class:"form-control" %>
+    <%= f.number_field :movie_duration, class:"form-control", required: true %>
   </div><br>
 
   <div class = "field form-group" >
     <strong><%= f.label :movie_language %></strong>
-    <%= f.text_field :movie_language, class:"form-control" %>
+    <%= f.text_field :movie_language, class:"form-control", required: true %>
   </div><br>
 
   <div class = "field form-group" >
     <strong><%= f.label :movie_release_date %></strong>
-    <%= f.date_field :movie_release_date, class:"form-control" %>
+    <%= f.date_field :movie_release_date, class:"form-control", required: true %>
   </div><br>
 
   <div class = "field form-group" >
     <strong><%= f.label :movie_rating%></strong>
-    <%= f.number_field :movie_rating, class:"form-control" %>
+    <%= f.number_field :movie_rating, class:"form-control", required: true %>
   </div><br>
 
   <div class = "field form-group" >

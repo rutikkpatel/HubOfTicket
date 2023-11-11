@@ -1,4 +1,6 @@
 class Booking < ApplicationRecord
+  validates :number_of_seats, presence:true
+  
   belongs_to :show
   belongs_to :user
   belongs_to :movie
