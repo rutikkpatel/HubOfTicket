@@ -48,6 +48,7 @@ gem "devise"
 gem "stripe"
 gem 'activeadmin'
 gem 'sassc-rails'
+gem "rolify"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
