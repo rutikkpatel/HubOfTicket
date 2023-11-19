@@ -16,4 +16,11 @@ ActiveAdmin.register Category do
   # end
   
   permit_params :category_name
+
+  form do |f|
+    f.inputs "Add Movie's Category Details" do
+      f.input :category_name
+    end
+    f.actions
+  end
 end
