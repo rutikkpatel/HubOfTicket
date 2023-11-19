@@ -15,4 +15,6 @@ ActiveAdmin.register Movie do
   #   permitted
   # end
   
+  permit_params :movie_title, :movie_description, :movie_duration, :movie_language, :movie_release_date, :movie_country, :movie_rating, :image, :category_id, :theater_id
+
 end
