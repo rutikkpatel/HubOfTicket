@@ -12,9 +12,9 @@
     </div>
   </div>
 <% else %>
-  <div class="d-flex justify-content-center p-5">
-    <div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="row justify-content-around ">
       <% @movies.each do |movie| %>
+    <div class="card col-lg-4 col-md-4 col-sm-4 col-12 d-flex flex-column align-items-center mx-auto">
         <div class ="card style="width: 18rem;">
           <div class="col">
               <% if movie.image.attached? %>
@@ -25,7 +25,7 @@
               </div>
           </div>
         </div>
-      <%end%>
     </div>
+      <%end%>
   </div>
 <%end%>

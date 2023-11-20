@@ -1,12 +1,16 @@
 class ShowsController < ApplicationController
+  load_and_authorize_resource
+  
   before_action :set_show, only: [:edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:show]
 
   def index
-    @shows = Show.all
+    @movie = Movie.find(params[:movie_id].to_i)
+    @shows = @movie.shows
   end
 
   def new
+    @movie = Movie.find(params[:movie_id].to_i)
     @show = Show.new
   end
 
@@ -14,7 +18,7 @@ class ShowsController < ApplicationController
     @show = Show.new(show_params)
     if @show.save
       flash[:notice] = "Show's details Added Successfully!"
-      redirect_to shows_path
+      redirect_to movie_shows_path
     else
       flash[:error] = "Show can't be added!"
       render :new
@@ -22,12 +26,13 @@ class ShowsController < ApplicationController
   end
 
   def edit
+    @movie = Movie.find(params[:movie_id].to_i)
   end
 
   def update
     if @show.update(show_params)
       flash[:notice] = "Show Has Been Updated Successfully!"
-      redirect_to shows_path
+      redirect_to movie_shows_path
     else
       flash[:error] = "Updation Operation Has Been Failed!"
       render :edit
@@ -35,14 +40,15 @@ class ShowsController < ApplicationController
   end
 
   def show
-    @movie = Movie.find(params[:id])
-    @shows = @movie.shows
+    @movie = Movie.find(params[:movie_id].to_i)
+    @show = Show.find(params[:id])
   end
 
   def destroy
+    @movie = Movie.find(params[:movie_id].to_i)
     @show = Show.find(params[:id])
     if @show.destroy
-      redirect_to shows_path
+      redirect_to movie_shows_path
     else
       flash[:error] = "Deletion Operation Has Been Failed!"
     end

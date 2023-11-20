@@ -1,21 +1,20 @@
-<h1>Payment Succeed</h1>
-<hr>
-Checkout Status: <%= @session_with_expand.payment_status %>
-<br>
-  Amount Paid: 
-  <%= @session_with_expand.amount_total/100.to_f %>
-  <%= @session_with_expand.currency %><br>
-  Country: <%= @session_with_expand.customer_details.address.country %><br>
-  City: <%= @session_with_expand.customer_details.address.city %><br>
-  Address Line 1: <%= @session_with_expand.customer_details.address.line1 %><br>
-  Address Line 2: <%= @session_with_expand.customer_details.address.line2 %><br>
-  Customer Name: <%= @session_with_expand.customer_details.name %><br>
-  Customer Email: <%= @session_with_expand.customer_details.email %><br>
-
-<hr>
-<%@session_with_expand.line_items.data.each do |line_item| %>
-  Movie Name: <%= line_item.description %><br>
-  Number of Seats: <%= line_item.quantity %><br>
-<%end %>
-
-<%= @session_with_expand.payment_intent %>
+<div class="justify-content-center mt-5">
+  <div class="card shadow mb-3">
+    <div class="card-body">
+      <h1 class="card-title text-center">Payment Successfull!</h1>
+      <p class="card-title"><strong>Customer Name: </strong><%= @session_with_expand.customer_details.name %></p>
+      <p class="card-title"><strong>Customer Email: </strong><%= @session_with_expand.customer_details.email %></p>
+      <p class="card-title"><strong>Movie Name: </strong><% @session_with_expand.line_items.data.each do |line_item| %><%= line_item.description %><%end %></p>
+      <p class="card-title"><strong>Total Seats: </strong><%@session_with_expand.line_items.data.each do |line_item| %><%= line_item.quantity %><%end %></p>
+      <p class="card-title"><strong>Checkout Status: </strong><%= @session_with_expand.payment_status %></p>
+      <p class="card-title"><strong>Amount Paid : </strong><%= @session_with_expand.amount_total/100.to_f %><%= @session_with_expand.currency %></p>
+      <p class="card-title"><strong>Country: </strong><%= @session_with_expand.customer_details.address.country %></p>
+      <p class="card-title"><strong>City: </strong><%= @session_with_expand.customer_details.address.city %></p>
+      <p class="card-title"><strong>Address Line 1: </strong><%= @session_with_expand.customer_details.address.line1 %></p>
+      <p class="card-title"><strong>Address Line 2: </strong><%= @session_with_expand.customer_details.address.line2 %></p>
+      <p class="card-text"><%= link_to 'Back', { controller: 'movies', action: 'index'}, class: "btn btn-primary" %></p>
+    </div>
+  </div>
+</div>
+<div class="col-lg-4 mt-5">
+</div>

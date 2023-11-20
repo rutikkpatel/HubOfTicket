@@ -16,7 +16,7 @@
           <p class="card-text"><strong>Theater : </strong><%= @movie.theater.theater_name %></p>
         </div>
         <div class="card-body btn-group" role="group">
-          <%= link_to 'Show Details', show_path(@movie), class: "text-decoration-none btn btn-secondary" %>
+          <%= link_to 'Show Details', movie_shows_path(@movie), class: "text-decoration-none btn btn-secondary" %>
           <%= link_to 'Go Back', { controller: 'movies', action: 'index'}, class: "btn btn-primary" %>
         </div>
       </div>

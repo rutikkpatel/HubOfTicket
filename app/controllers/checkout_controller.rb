@@ -39,18 +39,19 @@ class CheckoutController < ApplicationController
   def success
     booking = Booking.new(number_of_seats: session[:number_of_seats], selected_seats: session[:selected_seats], show_id: session[:show_id], theater_id: session[:theater_id], movie_id: session[:movie_id], user_id: session[:user_id])
 
-    if booking.save
-      # Clear session variables after successful booking
-      session[:number_of_seats] = nil
-      session[:selected_seats] = nil
-      session[:show_id] = nil
-      session[:theater_id] = nil
-      session[:movie_id] = nil
-      session[:user_id] = nil
-    end
+    # if booking.save
+    #   # Clear session variables after successful booking
+    #   session[:number_of_seats] = nil
+    #   session[:selected_seats] = nil
+    #   session[:show_id] = nil
+    #   session[:theater_id] = nil
+    #   session[:movie_id] = nil
+    #   session[:user_id] = nil
+    # end
     
     # Retrieve the expanded session information
     @session_with_expand = Stripe::Checkout::Session.retrieve({ id: params[:session_id], expand: ['payment_intent', 'line_items.data.price.product'] })
+    PaymentSuccessMailer.new_payment_email(current_user, @session_with_expand).deliver_no
     # @session_with_expand.line_items.data.each do |line_item|
 		# 	show = Show.find_by(stripe_show_id: line_item.price.product)
     # end
