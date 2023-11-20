@@ -95,6 +95,7 @@ GEM
     bootsnap (1.16.0)
       msgpack (~> 1.2)
     builder (3.2.4)
+    cancancan (3.5.0)
     capybara (3.39.2)
       addressable
       matrix
@@ -257,6 +258,7 @@ GEM
       actionpack (>= 5.2)
       railties (>= 5.2)
     rexml (3.2.6)
+    rolify (6.0.1)
     ruby-vips (2.2.0)
       ffi (~> 1.12)
     ruby2_keywords (0.0.5)
@@ -315,6 +317,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin
   bootsnap
+  cancancan
   capybara
   debug
   devise
@@ -326,6 +329,7 @@ DEPENDENCIES
   pry
   puma (>= 5.0)
   rails (~> 7.1.0)
+  rolify
   sassc-rails
   selenium-webdriver
   sprockets-rails

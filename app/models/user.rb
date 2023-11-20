@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  resourcify
+  rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -26,5 +28,16 @@ class User < ApplicationRecord
   after_create do
     customer = Stripe::Customer.create(email: email)
     update(stripe_customer_id: customer.id)
+  end
+
+  after_create :assign_default_role
+
+  def assign_default_role
+    if AdminUser.find_by(email: self.email) 
+      self.add_role(:admin)
+    else
+      self.add_role(:newuser)
+    end
+    #self.add_role(:newuser) if self.roles.blank?
   end
 end
