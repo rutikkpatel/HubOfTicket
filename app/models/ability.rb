@@ -8,7 +8,12 @@ class Ability
       can :manage, :all
     else
       #cannot :manage, ActiveAdmin::Page
-      can :read, :all
+      #can :read, :all
+      can :create, Booking
+      can :read, Show
+      can :read, Movie
+      #cannot :create, :edit, :destroy, Show
+      cannot :manage, ActiveAdmin::Page
     end
     # Define abilities for the user here. For example:
     #

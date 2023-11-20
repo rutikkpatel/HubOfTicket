@@ -33,6 +33,11 @@ class User < ApplicationRecord
   after_create :assign_default_role
 
   def assign_default_role
-    self.add_role(:newuser) if self.roles.blank?
+    if AdminUser.find_by(email: self.email) 
+      self.add_role(:admin)
+    else
+      self.add_role(:newuser)
+    end
+    #self.add_role(:newuser) if self.roles.blank?
   end
 end

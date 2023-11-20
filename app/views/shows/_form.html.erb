@@ -7,7 +7,7 @@
   </ul>
 <% end %>
 
-<%= form_with(model:@show, local: true, data: {turbo: false}) do |f| %>
+<%= form_with(model:[@movie, @show], local: true, data: {turbo: false}) do |f| %>
 
   <div class = "field form-group" >
     <strong><%= f.label :show_date %></strong>

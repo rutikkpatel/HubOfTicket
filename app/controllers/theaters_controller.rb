@@ -1,4 +1,6 @@
 class TheatersController < ApplicationController
+  load_and_authorize_resource
+
   before_action :set_theater, only: [:edit, :update, :show, :destroy]
 
   def index
