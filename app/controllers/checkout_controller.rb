@@ -51,7 +51,7 @@ class CheckoutController < ApplicationController
     
     # Retrieve the expanded session information
     @session_with_expand = Stripe::Checkout::Session.retrieve({ id: params[:session_id], expand: ['payment_intent', 'line_items.data.price.product'] })
-    PaymentSuccessMailer.new_payment_email(current_user, @session_with_expand).deliver_no
+    PaymentSuccessMailer.new_payment_email(current_user, @session_with_expand).deliver_now
     # @session_with_expand.line_items.data.each do |line_item|
 		# 	show = Show.find_by(stripe_show_id: line_item.price.product)
     # end

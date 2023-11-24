@@ -3,29 +3,27 @@
 <% if @movies.count == 0 %>
   <div class="d-flex justify-content-center">
     <div class="my-1">
-      <img src="https://cdn.dribbble.com/users/1231865/screenshots/11157048/media/bc9427646c632ded563ee076fdc5dfda.jpg?compress=1&resize=1000x750&vertical=top" alt="image couldn't loaded!">
+      <img src="https://cdn.dribbble.com/users/1231865/screenshots/11157048/media/bc9427646c632ded563ee076fdc5dfda.jpg?compress=1&resize=1000x750&vertical=top" alt="Image couldn't be loaded!">
     </div>
   </div>
-  <div class="d-flex justify-content-center">
-    <div class="my-4">
-      <%= link_to 'Back', { controller: 'movies', action: 'index'}, class: "btn btn-primary" %>
-    </div>
+  <div class="d-flex justify-content-center my-4">
+    <%= link_to 'Back', { controller: 'movies', action: 'index'}, class: "btn btn-primary" %>
   </div>
 <% else %>
-  <div class="row justify-content-around ">
-      <% @movies.each do |movie| %>
-    <div class="card col-lg-4 col-md-4 col-sm-4 col-12 d-flex flex-column align-items-center mx-auto">
-        <div class ="card style="width: 18rem;">
-          <div class="col">
-              <% if movie.image.attached? %>
-                <%= image_tag movie.image, height: "700px", width: "700px", class: "card-img-top" %>
-              <% end %>
-              <div class="card-body">
-                <h5 class="card-title text-center"><%= link_to movie.movie_title, movie_path(movie) %></h5>
-              </div>
-          </div>
+  <div class="row justify-content-around">
+    <% @movies.each do |movie| %>
+      <div class="card col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
+        <% if movie.image.attached? %>
+          <%= link_to movie_path(movie) do %>
+            <%= image_tag movie.image, class: "card-img-top", alt: movie.movie_title %>
+          <% end %>
+        <% end %>
+        <div class="card-body">
+          <h5 class="card-title text-center">
+            <%= link_to movie.movie_title, movie_path(movie), class: "text-dark text-decoration-none" %>
+          </h5>
         </div>
-    </div>
-      <%end%>
+      </div>
+    <% end %>
   </div>
-<%end%>
+<% end %>
